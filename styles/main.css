@@ -1,0 +1,376 @@
+/*****************************************************/
+/* This semester we will be using my variation of    */
+/* Josh Comeau's CSS Reset instead of normalize      */
+/* Read more at                                      */
+/* https://www.joshwcomeau.com/css/custom-css-reset/ */
+/*****************************************************/
+/* Always add your CSS below the reset CSS           */
+/*****************************************************/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  /* this an experimental line-height; if it breaks, add line-height: 1.5 to body */
+  line-height: calc(1em + 0.5rem);
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* until you get a feel for overflow, I'll keep these next two commented out */
+/* p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+} */
+
+/* p {
+  overflow-wrap: break-word;
+  hyphens: auto;
+} */
+
+/* temp CSS for HTML only assignments */
+picture img {
+  width: 100%;
+}
+
+svg {
+  width: 200px;
+}
+
+/* temp fix to size about img */
+img[srcset] {
+  width: 50%;
+  height: auto;
+  margin: 2rem auto;
+}
+
+/* temporary fix to size svg images */
+img[src$="svg"] {
+  width: 200px;
+}
+
+/************ add your CSS here *****************/
+
+:root {
+  --color-font: #444;
+  --light-blue: #9dc6be;
+  --tan: #d3c2ae;
+  --seafoam: #a4c4bf;
+  --cream: #fffcef;
+  --dark-blue: #40656d;
+  --color-font-white: #f0f8ff;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  align-self: center;
+  padding: 0 1rem;
+  max-width: 90rem;
+  color: var(--color-font);
+  font-weight: 500;
+  font-size: 1.25rem;
+  margin-bottom: 3em;
+  font-family: "Courier New", Courier, monospace;
+  color: #444;
+}
+
+p {
+  text-align: center;
+}
+
+p.instructions {
+  text-align: left;
+  margin: 2rem 5rem 2rem 5rem;
+  padding: 2rem 5rem 2rem 5rem;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 1.5rem;
+  color: #444;
+}
+
+article {
+  margin-bottom: 3em;
+}
+
+aside {
+  margin-bottom: 3em;
+  margin: 0 auto;
+  padding: 0 1rem;
+  max-width: 70rem;
+}
+
+footer {
+  padding: 2em;
+  background-color: var(--color-font);
+  font-family: "Bitter", serif;
+  font-weight: bold;
+  color: var(--color-font-white);
+  margin: 0em;
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  align-self: stretch;
+  font-size: 1rem;
+}
+
+footer p {
+  margin-bottom: 1em;
+}
+
+figure {
+  text-align: center;
+}
+
+div.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 5rem;
+}
+
+h1 {
+  font-family: "Bitter", serif;
+  color: white;
+  font-size: 5rem;
+  letter-spacing: 1rem;
+  text-align: center;
+}
+
+h2 {
+  font-family: "Bitter", serif;
+  color: var(--dark-blue);
+  font-size: 4rem;
+  letter-spacing: 0.5rem;
+  text-align: center;
+  margin-top: 3em;
+  margin-bottom: 1em;
+}
+
+h3 {
+  font-family: "Bitter", serif;
+  color: var(--seafoam);
+  font-size: 3.5rem;
+  text-align: center;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+h4 {
+  font-family: "Bitter", serif;
+  color: var(--seafoam);
+  font-size: 3rem;
+  text-align: center;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+ul {
+  list-style: none;
+}
+
+a:link {
+  color: var(--seafoam);
+  text-decoration: none;
+}
+
+a:visited {
+  color: var(--light-blue);
+  text-decoration: none;
+}
+
+a[href]:hover {
+  color: #c0e2db;
+  transition: color 300ms;
+}
+
+.button[href] {
+  font-size: 1rem;
+  font-family: "Bitter", serif;
+  font-weight: bold;
+  color: var(--dark-blue);
+  border: 1px solid var(--dark-blue);
+  padding: 0.5em 2.5em;
+  margin: 5rem;
+  display: inline-block;
+
+  transition: background-color 300ms, color 300ms;
+}
+
+.button[href]:hover {
+  background-color: var(--dark-blue);
+  color: #fff;
+  text-decoration: none;
+}
+
+.hero {
+  height: 90vh;
+  position: relative;
+}
+
+.hero .heading-background {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero h1 {
+  margin: 0;
+  text-align: center;
+  font-weight: 200;
+  font-size: clamp(3.5rem, 4.5vw, 10rem);
+  text-shadow: 4px 4px 8px #444;
+  letter-spacing: 2.5vw;
+  line-height: 2;
+}
+
+.hero h1 .keyword {
+  font-size: 18vw;
+  text-shadow: 3px 3px 8px #444;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.hero p {
+  margin: 0;
+  padding-top: 5rem;
+  text-align: center;
+  font-family: "Bitter", serif;
+  font-weight: 1000;
+  color: var(--dark-blue);
+  font-size: clamp(1.5rem, 2vw, 5rem);
+  line-height: 2;
+}
+
+.hero::before {
+  content: "";
+  display: block;
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(to top, #fff 8%, transparent 30%);
+}
+
+picture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero picture {
+  height: 100%;
+}
+
+img .heroattribute {
+  opacity: 50%;
+}
+
+.card {
+  max-width: 300px;
+  padding: 15px;
+  box-shadow: 2px 3px 3px 3px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+  transition: transform 300ms ease;
+}
+
+.card a {
+  color: var(--dark-blue);
+}
+
+.card img {
+  border-radius: 30%;
+  padding: 1rem 1rem;
+  transition: box-shadow 300ms;
+}
+
+.cards {
+  display: flex;
+  gap: 3rem;
+  padding: 1rem;
+  font-size: 1em;
+  font-weight: bold;
+  text-align: center;
+  margin: 1rem 0;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.2);
+  color: var(--light-blue);
+}
+
+ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  font-family: "Bitter", serif;
+  font-weight: bold;
+  font-size: 1.5rem;
+  background-color: var(--dark-blue);
+  overflow-x: hidden;
+  padding: 0px;
+}
+
+li.instructions {
+  text-align: left;
+  margin: 0rem 10rem 0rem 10rem;
+  padding: 0rem 5rem 0rem 5rem;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 1.5rem;
+  color: #444;
+}
+
+.listitem {
+  margin: 2.5rem 0 2.5rem 0;
+  color: var(--seafoam);
+}
+
+.listitem a {
+  color: aliceblue;
+}
+
+.listitem a:hover {
+  color: var(--light-blue);
+}
+
+textarea {
+  display: flex;
+  justify-content: center;
+}
