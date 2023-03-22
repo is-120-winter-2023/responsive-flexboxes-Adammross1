@@ -291,9 +291,10 @@ a[href]:hover {
   line-height: 2;
 }
 
-.keyword {
+span.keyword {
   font-size: 18vw;
   color: white;
+
   font-family: "Times New Roman", Times, serif;
   background-image: linear-gradient(
     ro right,
