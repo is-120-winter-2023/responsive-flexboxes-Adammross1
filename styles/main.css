@@ -92,6 +92,12 @@ img[src$="svg"] {
   --cream: #fffcef;
   --dark-blue: #40656d;
   --color-font-white: #f0f8ff;
+  --book-height: 300px;
+  --book-width: 200px;
+  --width-cover-edge: 8px;
+  --color-end-paper: #fffbec;
+  --color-edge: #999;
+  --color-spine: #31265c;
 }
 
 body {
@@ -141,7 +147,7 @@ footer {
   font-family: "Bitter", serif;
   font-weight: bold;
   color: var(--color-font-white);
-  margin: 0em;
+  margin-top: 10rem;
   display: block;
   width: 100%;
   box-sizing: border-box;
@@ -161,6 +167,13 @@ div.container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  padding: 5rem;
+}
+
+div.container-book {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
   padding: 5rem;
 }
 
@@ -268,6 +281,12 @@ a[href]:hover {
   font-family: "Times New Roman", Times, serif;
 }
 
+.hero h1 .keyword-contact {
+  font-size: 15vw;
+  text-shadow: 3px 3px 8px #444;
+  font-family: "Times New Roman", Times, serif;
+}
+
 .hero p {
   margin: 0;
   padding-top: 5rem;
@@ -335,7 +354,7 @@ img .heroattribute {
   color: var(--light-blue);
 }
 
-ul {
+header ul {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -357,6 +376,10 @@ li.instructions {
   color: #444;
 }
 
+header nav a {
+  display: block;
+}
+
 .listitem {
   margin: 2.5rem 0 2.5rem 0;
   color: var(--seafoam);
@@ -373,4 +396,227 @@ li.instructions {
 textarea {
   display: flex;
   justify-content: center;
+}
+
+/* Media Query
+@media (min-width 500px) {
+  .panel {
+    flex-direction: row;
+  }
+
+  .panel h2 {
+    margin: 0;
+  }
+
+  .panel .text-wrapper {
+    flex: 1 1 40%;
+  }
+
+  .panel .image-wrapper {
+    order: 0;
+    flex: 1 1 60%;
+  }
+} */
+
+.cover-bible img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* the book container */
+.book {
+  position: relative;
+  width: var(--book-width);
+  height: var(--book-height);
+
+  perspective: 800px;
+
+  /* transfrom-style only applies to direct children. It is not 
+  inherited   */
+  transform-style: preserve-3d;
+
+  /* needed if in flexbox column to keep from squashing 
+     empty elements */
+  flex: 0 0 auto;
+
+  /* add room for the animation   */
+  margin-bottom: 32px;
+}
+
+/* position cover and pages relative to book container 
+   add preserve-3D for when they are rotated. */
+.cover-front,
+.cover-front div,
+.cover-back {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+}
+
+/**** front cover ****/
+.cover-front {
+  transform: rotateY(-34deg) translateZ(8px);
+  transform-origin: left;
+  transition: transform 0.8s ease;
+}
+
+/* outside front cover */
+.cover-front div {
+  background: var(--color-end-paper);
+  /* backface-visiblity hides the backside of an element when 
+   it is rotated */
+  backface-visibility: hidden;
+}
+
+/* inside front cover  */
+.cover-front div:last-child {
+  transform: rotateY(180deg);
+}
+
+/* add the appearance of depth to the edge of the cover */
+.cover-front div:first-child::before {
+  content: "";
+  position: absolute;
+  background-color: var(--color-edge);
+  width: var(--width-cover-edge);
+  top: 0;
+  left: 0;
+  height: var(--book-height);
+  /* unless you want to do trig, you may have to fiddle 
+  with the translateZ value. You are pulling forward from the 
+  viewport plane - it's a few pixels shorter than the width */
+  transform: rotateY(90deg) translateZ(197px);
+}
+
+.cover-back {
+  background: var(--color-edge);
+  transform-origin: left;
+  transform: rotateY(-15deg) translateZ(-3px);
+}
+
+/**** pages ****/
+.pages,
+.pages > div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform-style: preserve-3d;
+}
+
+.pages {
+  width: 100%;
+  height: 98%;
+  top: 1%;
+  left: 3%;
+}
+
+.pages > div {
+  width: 100%;
+  height: 100%;
+  transform-origin: left;
+  transition: transform 600ms ease;
+
+  background: linear-gradient(to left, #e1ddd8, #fffbf6);
+  /* two inset box shadows add some highlight - 
+   try changing the color and increase the alpha
+   value to see what it's doing*/
+  box-shadow: inset 0px -1px 2px rgb(50 50 50 / 0.2),
+    inset -1px 0px 1px rgb(150 150 150 / 0.2);
+
+  border-radius: 0px 5px 5px 0px;
+}
+
+/* pages are step rotated about the y axis to 
+   give the illusion of depth*/
+.pages div:nth-child(1) {
+  transform: rotateY(-28deg);
+  transition-duration: 0.6s;
+}
+
+.pages div:nth-child(2) {
+  transform: rotateY(-30deg);
+  transition-duration: 0.6s;
+}
+
+.pages div:nth-child(3) {
+  transform: rotateY(-32deg);
+  transition-duration: 0.4s;
+}
+
+.pages div:nth-child(4) {
+  transform: rotateY(-34deg);
+  transition-duration: 0.5s;
+}
+
+.pages div:nth-child(5) {
+  transform: rotateY(-36deg);
+  transition-duration: 0.6s;
+}
+
+/**** message ****/
+.message {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.message p {
+  color: #000;
+  font-size: 0.9em;
+  letter-spacing: 1px;
+  font-weight: 600;
+  padding: 0.1em 0.4em;
+  margin-bottom: 1em;
+}
+
+/**** spine  ****/
+.book-spine {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 16px;
+  transform: rotateY(60deg) translateX(-5px) translateZ(-12px);
+  background-color: var(--color-spine);
+}
+
+/**** animations ****/
+.book:hover > .cover-front {
+  transform: rotateY(-160deg) translateZ(0);
+}
+
+/* pages animations */
+
+/* since there is a transform and transition-duration 
+   on :hover, when the pages open, they will
+   use these settings (they open slower than they
+   close) */
+/* notice that the first two pages barely rotate compared
+   to the others */
+.book:hover > .pages div:nth-child(1) {
+  transform: rotateY(-20deg);
+  transition-duration: 1.5s;
+}
+
+.book:hover > .pages div:nth-child(2) {
+  transform: rotateY(-25deg);
+  transition-duration: 1.8s;
+}
+
+.book:hover > .pages div:nth-child(3) {
+  transform: rotateY(-140deg);
+  transition-duration: 1.6s;
+}
+
+.book:hover > .pages div:nth-child(4) {
+  transform: rotateY(-145deg);
+  transition-duration: 1.4s;
+}
+
+.book:hover > .pages div:nth-child(5) {
+  transform: rotateY(-150deg);
+  transition-duration: 1.2s;
 }
