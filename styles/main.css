@@ -86,6 +86,7 @@ img[src$="svg"] {
 
 :root {
   --color-font: #444;
+  --link: #557a82;
   --light-blue: #9dc6be;
   --tan: #d3c2ae;
   --seafoam: #a4c4bf;
@@ -95,9 +96,9 @@ img[src$="svg"] {
   --book-height: 300px;
   --book-width: 200px;
   --width-cover-edge: 8px;
-  --color-end-paper: #fffbec;
-  --color-edge: #999;
-  --color-spine: #31265c;
+  --color-end-paper: rgb(36, 36, 81);
+  --color-edge: rgb(36, 36, 81);
+  --color-spine: rgb(23, 23, 50);
 }
 
 body {
@@ -123,11 +124,25 @@ p {
 
 p.instructions {
   text-align: left;
-  margin: 2rem 5rem 2rem 5rem;
+  margin: 2rem 10rem 2rem 10rem;
   padding: 2rem 5rem 2rem 5rem;
   font-family: "Courier New", Courier, monospace;
   font-size: 1.5rem;
   color: #444;
+}
+
+p.instructions-list {
+  text-align: left;
+  margin: 0rem 10rem 0rem 10rem;
+  padding: 0rem 5rem 5rem 5rem;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 1.5rem;
+  color: #444;
+}
+
+.instructions-border {
+  border: 2px solid var(--dark-blue);
+  margin: 0 15rem 0 15rem;
 }
 
 article {
@@ -207,7 +222,7 @@ h3 {
 h4 {
   font-family: "Bitter", serif;
   color: var(--seafoam);
-  font-size: 3rem;
+  font-size: 2rem;
   text-align: center;
   margin-top: 1em;
   margin-bottom: 1em;
@@ -218,17 +233,17 @@ ul {
 }
 
 a:link {
-  color: var(--seafoam);
+  color: var(--link);
   text-decoration: none;
 }
 
 a:visited {
-  color: var(--light-blue);
+  color: var(--link);
   text-decoration: none;
 }
 
 a[href]:hover {
-  color: #c0e2db;
+  color: var(--seafoam);
   transition: color 300ms;
 }
 
@@ -276,16 +291,26 @@ a[href]:hover {
   line-height: 2;
 }
 
-.hero h1 .keyword {
+.keyword {
   font-size: 18vw;
   color: white;
-  text-shadow: 4px 4px 10px #444;
   font-family: "Times New Roman", Times, serif;
+  background-image: linear-gradient(
+    ro right,
+    #a77934,
+    #cb9b51,
+    #f6e27a,
+    #f6f2c0,
+    #f6e27a,
+    #cb9b51,
+    #a77934,
+  );
+  
 }
 
 .hero h1 .keyword-contact {
   font-size: 15vw;
-  text-shadow: 3px 3px 8px #444;
+  /* text-shadow: 4px 4px 10px #444; */
   font-family: "Times New Roman", Times, serif;
 }
 
@@ -305,7 +330,7 @@ a[href]:hover {
   display: block;
   position: absolute;
   inset: 0;
-  background-image: linear-gradient(to top, #fff 8%, transparent 30%);
+  background-image: linear-gradient(to top, #fff 15%, transparent 70%);
 }
 
 picture img {
@@ -432,7 +457,7 @@ textarea {
   width: var(--book-width);
   height: var(--book-height);
 
-  perspective: 800px;
+  perspective: 1200px;
 
   /* transfrom-style only applies to direct children. It is not 
   inherited   */
@@ -458,7 +483,7 @@ textarea {
 
 /**** front cover ****/
 .cover-front {
-  transform: rotateY(-34deg) translateZ(8px);
+  transform: rotateY(-30deg) translateZ(8px);
   transform-origin: left;
   transition: transform 0.8s ease;
 }
@@ -519,7 +544,7 @@ textarea {
   transform-origin: left;
   transition: transform 600ms ease;
 
-  background: linear-gradient(to left, #e1ddd8, #fffbf6);
+  background: linear-gradient(to left, #e9dfd3, #fffbf6);
   /* two inset box shadows add some highlight - 
    try changing the color and increase the alpha
    value to see what it's doing*/
@@ -532,27 +557,27 @@ textarea {
 /* pages are step rotated about the y axis to 
    give the illusion of depth*/
 .pages div:nth-child(1) {
-  transform: rotateY(-28deg);
+  transform: rotateY(-23deg);
   transition-duration: 0.6s;
 }
 
 .pages div:nth-child(2) {
-  transform: rotateY(-30deg);
+  transform: rotateY(-25deg);
   transition-duration: 0.6s;
 }
 
 .pages div:nth-child(3) {
-  transform: rotateY(-32deg);
+  transform: rotateY(-27deg);
   transition-duration: 0.4s;
 }
 
 .pages div:nth-child(4) {
-  transform: rotateY(-34deg);
+  transform: rotateY(-29deg);
   transition-duration: 0.5s;
 }
 
 .pages div:nth-child(5) {
-  transform: rotateY(-36deg);
+  transform: rotateY(-31deg);
   transition-duration: 0.6s;
 }
 
@@ -563,15 +588,18 @@ textarea {
   align-items: flex-start;
   justify-content: center;
   padding: 1rem;
+  overflow-y: scroll;
 }
 
 .message p {
-  color: #000;
-  font-size: 0.9em;
+  color: #222;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 1em;
   letter-spacing: 1px;
   font-weight: 600;
   padding: 0.1em 0.4em;
   margin-bottom: 1em;
+  overflow-y: scroll;
 }
 
 /**** spine  ****/
@@ -599,26 +627,26 @@ textarea {
 /* notice that the first two pages barely rotate compared
    to the others */
 .book:hover > .pages div:nth-child(1) {
-  transform: rotateY(-20deg);
+  transform: rotateY(-25deg);
   transition-duration: 1.5s;
 }
 
 .book:hover > .pages div:nth-child(2) {
-  transform: rotateY(-25deg);
+  transform: rotateY(-30deg);
   transition-duration: 1.8s;
 }
 
 .book:hover > .pages div:nth-child(3) {
-  transform: rotateY(-140deg);
+  transform: rotateY(-145deg);
   transition-duration: 1.6s;
 }
 
 .book:hover > .pages div:nth-child(4) {
-  transform: rotateY(-145deg);
+  transform: rotateY(-150deg);
   transition-duration: 1.4s;
 }
 
 .book:hover > .pages div:nth-child(5) {
-  transform: rotateY(-150deg);
+  transform: rotateY(-155deg);
   transition-duration: 1.2s;
 }
