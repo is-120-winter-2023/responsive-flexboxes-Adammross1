@@ -99,6 +99,7 @@ img[src$="svg"] {
   --color-end-paper: rgb(36, 36, 81);
   --color-edge: rgb(36, 36, 81);
   --color-spine: rgb(23, 23, 50);
+  --gutter: 1vw;
 }
 
 body {
@@ -109,7 +110,7 @@ body {
 main {
   align-self: center;
   padding: 0 1rem;
-  max-width: 90rem;
+  max-width: 80rem;
   color: var(--color-font);
   font-weight: 500;
   font-size: 1.25rem;
@@ -122,36 +123,54 @@ p {
   text-align: center;
 }
 
-p.instructions {
-  text-align: left;
-  margin: 2rem 10rem 2rem 10rem;
-  padding: 2rem 5rem 2rem 5rem;
-  font-family: "Courier New", Courier, monospace;
+p.scripture {
+  text-align: center;
+  font-family: "Bitter", serif;
+  color: var(--light-blue);
   font-size: 1.5rem;
+  padding-bottom: 2rem;
+}
+
+p.instructions {
+  text-align: center;
+  padding: 2vw;
+  font-family: "Courier New", Courier, monospace;
+  font-size: clamp(2vw, 1.5vw, 10vw);
   color: #444;
 }
 
 p.instructions-list {
   text-align: left;
-  margin: 0rem 10rem 0rem 10rem;
-  padding: 0rem 5rem 5rem 5rem;
+  padding: 0 2vw 2vw 2vw;
   font-family: "Courier New", Courier, monospace;
-  font-size: 1.5rem;
+  font-size: clamp(2vw, 1.5vw, 10vw);
   color: #444;
 }
 
 .instructions-border {
   border: 2px solid var(--dark-blue);
-  margin: 0 15rem 0 15rem;
 }
 
 article {
-  margin-bottom: 3em;
+  margin-bottom: 10rem;
+}
+
+.panel {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.panel-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 aside {
   margin-bottom: 3em;
-  margin: 0 auto;
   padding: 0 1rem;
   max-width: 70rem;
 }
@@ -171,7 +190,7 @@ footer {
 }
 
 footer p {
-  margin-bottom: 1em;
+  margin-bottom: 0.5vw;
 }
 
 figure {
@@ -189,31 +208,35 @@ div.container-book {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
+}
+
+div.book-spacing {
   padding: 5rem;
 }
 
 h1 {
   font-family: "Bitter", serif;
-  color: white;
-  font-size: 5rem;
+  color: var(--dark-blue);
+  font-size: clamp(4.5vw, 4.5vw, 10vw);
+  margin: var(--gutter);
   letter-spacing: 1rem;
   text-align: center;
 }
 
 h2 {
+  text-align: center;
   font-family: "Bitter", serif;
   color: var(--dark-blue);
-  font-size: 4rem;
+  font-size: clamp(4.5vw, 4.5vw, 10vw);
   letter-spacing: 0.5rem;
-  text-align: center;
-  margin-top: 3em;
-  margin-bottom: 1em;
+  margin: var(--gutter);
+  padding: 4vw;
 }
 
 h3 {
   font-family: "Bitter", serif;
   color: var(--seafoam);
-  font-size: 3.5rem;
+  font-size: clamp(3.5vw, 3.5vw, 10vw);
   text-align: center;
   margin-top: 1em;
   margin-bottom: 1em;
@@ -222,7 +245,7 @@ h3 {
 h4 {
   font-family: "Bitter", serif;
   color: var(--seafoam);
-  font-size: 2rem;
+  font-size: clamp(2.5vw, 2.5vw, 10vw);
   text-align: center;
   margin-top: 1em;
   margin-bottom: 1em;
@@ -254,7 +277,7 @@ a[href]:hover {
   color: var(--dark-blue);
   border: 1px solid var(--dark-blue);
   padding: 0.5em 2.5em;
-  margin: 5rem;
+  /* margin: 5rem; */
   display: inline-block;
 
   transition: background-color 300ms, color 300ms;
@@ -281,49 +304,61 @@ a[href]:hover {
 }
 
 .hero h1 {
-  margin: 0;
+  margin: var(--gutter);
   text-align: center;
   font-weight: 400;
-  font-size: clamp(3.5rem, 4.5vw, 10rem);
+  font-size: clamp(3.5vw, 4.5vw, 10vw);
   color: var(--dark-blue);
-  text-shadow: 4px 4px 8px aliceblue;
   letter-spacing: 2vw;
   line-height: 2;
 }
 
-span.keyword {
-  font-size: 18vw;
-  color: white;
-
+.keyword {
+  font-size: 20vw;
+  color: transparent;
   font-family: "Times New Roman", Times, serif;
-  background-image: linear-gradient(
-    ro right,
+  font-weight: 700;
+  background: linear-gradient(
+    to right,
     #a77934,
     #cb9b51,
-    #f6e27a,
-    #f6f2c0,
+    #f6e387,
+    #f6e590,
     #f6e27a,
     #cb9b51,
-    #a77934,
+    #a77934
   );
-  
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  margin: var(--gutter);
 }
 
-.hero h1 .keyword-contact {
-  font-size: 15vw;
-  /* text-shadow: 4px 4px 10px #444; */
+.keyword-charity {
+  justify-content: flex-end;
+  font-size: clamp(16vw, 16vw, 10vw);
+  font-weight: bold;
+  text-shadow: 5px 5px 10px white;
   font-family: "Times New Roman", Times, serif;
+  margin: var(--gutter);
+}
+
+.hero h1 .keyword-nav {
+  font-size: clamp(16vw, 16vw, 10vw);
+  font-weight: bold;
+  text-shadow: 5px 5px 10px white;
+  font-family: "Times New Roman", Times, serif;
+  color: var(--seafoam);
+  margin: var(--gutter);
 }
 
 .hero p {
-  margin: 0;
-  padding-top: 5rem;
   text-align: center;
   font-family: "Bitter", serif;
   font-weight: 1000;
-  color: var(--dark-blue);
-  font-size: clamp(1.5rem, 2vw, 5rem);
+  color: var(--light-blue);
+  font-size: clamp(1.5vw, 2vw, 5vw);
   line-height: 2;
+  margin: var(--gutter);
 }
 
 .hero::before {
@@ -331,7 +366,7 @@ span.keyword {
   display: block;
   position: absolute;
   inset: 0;
-  background-image: linear-gradient(to top, #fff 15%, transparent 70%);
+  background-image: linear-gradient(to top, #fff 20%, transparent 100%);
 }
 
 picture img {
@@ -344,12 +379,8 @@ picture img {
   height: 100%;
 }
 
-img .heroattribute {
-  opacity: 50%;
-}
-
 .card {
-  max-width: 300px;
+  max-width: 170px;
   padding: 15px;
   box-shadow: 2px 3px 3px 3px rgba(0, 0, 0, 0.2);
   background-color: #fff;
@@ -360,6 +391,10 @@ img .heroattribute {
   color: var(--dark-blue);
 }
 
+p.card-font {
+  font-family: "Bitter", serif;
+}
+
 .card img {
   border-radius: 30%;
   padding: 1rem 1rem;
@@ -368,12 +403,12 @@ img .heroattribute {
 
 .cards {
   display: flex;
+  flex-wrap: wrap;
   gap: 3rem;
   padding: 1rem;
-  font-size: 1em;
+  font-size: 1rem;
   font-weight: bold;
   text-align: center;
-  margin: 1rem 0;
 }
 
 .card:hover {
@@ -395,15 +430,6 @@ header ul {
   padding: 0px;
 }
 
-li.instructions {
-  text-align: left;
-  margin: 0rem 10rem 0rem 10rem;
-  padding: 0rem 5rem 0rem 5rem;
-  font-family: "Courier New", Courier, monospace;
-  font-size: 1.5rem;
-  color: #444;
-}
-
 header nav a {
   display: block;
 }
@@ -418,33 +444,15 @@ header nav a {
 }
 
 .listitem a:hover {
-  color: var(--light-blue);
+  /* color: var(--light-blue); */
+  border: 1px solid transparent;
+  border-bottom: aliceblue;
 }
 
 textarea {
   display: flex;
   justify-content: center;
 }
-
-/* Media Query
-@media (min-width 500px) {
-  .panel {
-    flex-direction: row;
-  }
-
-  .panel h2 {
-    margin: 0;
-  }
-
-  .panel .text-wrapper {
-    flex: 1 1 40%;
-  }
-
-  .panel .image-wrapper {
-    order: 0;
-    flex: 1 1 60%;
-  }
-} */
 
 .cover-bible img {
   width: 100%;
@@ -458,7 +466,7 @@ textarea {
   width: var(--book-width);
   height: var(--book-height);
 
-  perspective: 1200px;
+  perspective: 2000px;
 
   /* transfrom-style only applies to direct children. It is not 
   inherited   */
@@ -511,16 +519,13 @@ textarea {
   top: 0;
   left: 0;
   height: var(--book-height);
-  /* unless you want to do trig, you may have to fiddle 
-  with the translateZ value. You are pulling forward from the 
-  viewport plane - it's a few pixels shorter than the width */
   transform: rotateY(90deg) translateZ(197px);
 }
 
 .cover-back {
   background: var(--color-edge);
   transform-origin: left;
-  transform: rotateY(-15deg) translateZ(-3px);
+  transform: rotateY(-15deg) translateZ(-1.5px);
 }
 
 /**** pages ****/
@@ -544,19 +549,12 @@ textarea {
   height: 100%;
   transform-origin: left;
   transition: transform 600ms ease;
-
   background: linear-gradient(to left, #e9dfd3, #fffbf6);
-  /* two inset box shadows add some highlight - 
-   try changing the color and increase the alpha
-   value to see what it's doing*/
   box-shadow: inset 0px -1px 2px rgb(50 50 50 / 0.2),
     inset -1px 0px 1px rgb(150 150 150 / 0.2);
-
   border-radius: 0px 5px 5px 0px;
 }
 
-/* pages are step rotated about the y axis to 
-   give the illusion of depth*/
 .pages div:nth-child(1) {
   transform: rotateY(-23deg);
   transition-duration: 0.6s;
@@ -619,14 +617,6 @@ textarea {
   transform: rotateY(-160deg) translateZ(0);
 }
 
-/* pages animations */
-
-/* since there is a transform and transition-duration 
-   on :hover, when the pages open, they will
-   use these settings (they open slower than they
-   close) */
-/* notice that the first two pages barely rotate compared
-   to the others */
 .book:hover > .pages div:nth-child(1) {
   transform: rotateY(-25deg);
   transition-duration: 1.5s;
@@ -651,3 +641,32 @@ textarea {
   transform: rotateY(-155deg);
   transition-duration: 1.2s;
 }
+
+/* Media Queries */
+@media (min-width: 401px) {
+  /* tablet CSS */
+}
+
+@media (min-width: 801px) {
+  /* desktop CSS */
+}
+
+/* Media Query
+@media (min-width 500px) {
+  .panel {
+    flex-direction: row;
+  }
+
+  .panel h2 {
+    margin: 0;
+  }
+
+  .panel .text-wrapper {
+    flex: 1 1 40%;
+  }
+
+  .panel .image-wrapper {
+    order: 0;
+    flex: 1 1 60%;
+  }
+} */
