@@ -110,7 +110,7 @@ body {
 main {
   align-self: center;
   padding: 0 1rem;
-  max-width: 80rem;
+  max-width: 30rem;
   color: var(--color-font);
   font-weight: 500;
   font-size: 1.25rem;
@@ -135,7 +135,7 @@ p.instructions {
   text-align: center;
   padding: 2vw;
   font-family: "Courier New", Courier, monospace;
-  font-size: clamp(2vw, 1.5vw, 10vw);
+  font-size: 1.25vw;
   color: #444;
 }
 
@@ -143,12 +143,15 @@ p.instructions-list {
   text-align: left;
   padding: 0 2vw 2vw 2vw;
   font-family: "Courier New", Courier, monospace;
-  font-size: clamp(2vw, 1.5vw, 10vw);
+  font-size: 1.25vw;
   color: #444;
 }
 
 .instructions-border {
+  display: flex;
+  flex-direction: column;
   border: 2px solid var(--dark-blue);
+  margin: 5rem;
 }
 
 article {
@@ -157,7 +160,7 @@ article {
 
 .panel {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -644,12 +647,16 @@ textarea {
 
 /* Media Queries */
 @media (min-width: 401px) {
-  /* tablet CSS */
+    .main {
+      max-width: 50rem;
+  }
 }
 
 @media (min-width: 801px) {
-  /* desktop CSS */
-}
+    .main {
+      max-width: 80rem;
+    }
+  }
 
 /* Media Query
 @media (min-width 500px) {
