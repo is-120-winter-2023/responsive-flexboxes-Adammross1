@@ -10,8 +10,8 @@ let index, about, contact, indexDom, aboutDom, contactDom;
 
 try {
   index = fs.readFileSync("./index.html", "utf-8");
-  about = fs.readFileSync("./about/index.html", "utf-8");
-  contact = fs.readFileSync("./contact/index.html", "utf-8");
+  about = fs.readFileSync("./About/index.html", "utf-8");
+  contact = fs.readFileSync("./Contact/index.html", "utf-8");
 } catch (err) {
   console.error("could not find html files");
 }
